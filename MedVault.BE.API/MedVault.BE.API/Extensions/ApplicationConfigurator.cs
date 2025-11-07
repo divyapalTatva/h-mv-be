@@ -1,4 +1,5 @@
 ﻿using MedVault.BE.API.Middleware;
+using MedVault.BE.Common.Constants;
 
 namespace MedVault.BE.API.Extensions
 {
@@ -35,6 +36,9 @@ namespace MedVault.BE.API.Extensions
             app.UseMiddleware<ExceptionMiddleware>();
 
             app.UseHttpsRedirection();
+
+            // CORS (before authentication & authorization)
+            app.UseCors(SystemConstant.CORS_POLICY_NAME);
 
             // Configure the HTTP request pipeline.
             if (app.Environment.IsDevelopment())
