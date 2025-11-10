@@ -36,5 +36,11 @@ namespace MedVault.BE.API.Controllers
             int id = await patientProfileService.UpdatePatientProfile(patientProfileRequest);
             return responseService.GetSuccessResponse(HttpStatusCode.OK, id, SuccessMessage.PATIENT_PROFILE_UPDATE_SUCCESS);
         }
+
+        [HttpGet("get-emergency-details")]
+        public async Task<IActionResult> GetEmergencyDetails()
+        {
+            return responseService.GetSuccessResponse(HttpStatusCode.OK, await patientProfileService.GetEmergencyDetails());
+        }
     }
 }

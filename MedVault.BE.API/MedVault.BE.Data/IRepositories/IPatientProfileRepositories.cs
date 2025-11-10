@@ -11,5 +11,7 @@ namespace MedVault.BE.Data.IRepositories
         Task<int> UpdatePatientProfile(PatientProfile profile);
 
         Task<PatientProfile?> GetPatientProfileByIdAndUser(int id, int userId);
+
+        Task<PatientProfile?> GetPatientProfileByUser(int userId);
     }
 }

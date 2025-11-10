@@ -33,5 +33,13 @@ namespace MedVault.BE.Data.Repositories
                 .AsNoTracking()
                 .FirstOrDefaultAsync(p => p.Id == id && p.UserId == userId);
         }
+
+        public async Task<PatientProfile?> GetPatientProfileByUser(int userId)
+        {
+            return await medVaultDbContext.PatientProfiles
+                .Include(p => p.User)
+                .AsNoTracking()
+                .FirstOrDefaultAsync(p => p.UserId == userId);
+        }
     }
 }
