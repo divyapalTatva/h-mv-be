@@ -1,4 +1,6 @@
-﻿namespace MedVault.BE.Common.Constants
+﻿using System.Data;
+
+namespace MedVault.BE.Common.Constants
 {
     public class SuccessMessage
     {
@@ -48,5 +50,7 @@
         public const string DATA_NOT_EXISTS = "{0} does not exist.";
 
         public const string ID_IS_NULL_OR_ZERO = "Id cannot be null or zero.";
+
+        public const string USER_ROLE_NOT_AVAILABLE = "User role not available.";
     }
 }

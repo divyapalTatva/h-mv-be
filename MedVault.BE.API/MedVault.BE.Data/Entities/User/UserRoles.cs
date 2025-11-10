@@ -19,5 +19,10 @@ namespace MedVault.BE.Data.Entities.User
 
 
         public virtual User User { get; set; } = null!;
+
+        public static implicit operator UserRoles(UserRole v)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

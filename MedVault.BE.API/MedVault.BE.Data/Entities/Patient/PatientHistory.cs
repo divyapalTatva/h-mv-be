@@ -25,5 +25,7 @@ namespace MedVault.BE.Data.Entities.Patient
         public virtual PatientProfile PatientProfile { get; set; } = null!;
 
         public virtual DoctorProfile DoctorProfile { get; set; } = null!;
+
+        public virtual ICollection<MedicalDocument> MedicalDocumentes { get; set; } = new List<MedicalDocument>();
     }
 }
