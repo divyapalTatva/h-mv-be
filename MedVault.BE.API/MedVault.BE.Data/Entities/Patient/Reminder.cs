@@ -6,6 +6,7 @@ using static MedVault.BE.Common.Enums.Enums;
 
 namespace MedVault.BE.Data.Entities.Patient
 {
+    [Table("reminder")]
     public class Reminder : BaseEntity<int>
     {
         [Required]

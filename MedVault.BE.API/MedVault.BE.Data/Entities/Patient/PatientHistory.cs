@@ -5,6 +5,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace MedVault.BE.Data.Entities.Patient
 {
+    [Table("patient_history")]
     public class PatientHistory : BaseEntity<int>
     {
         [Required]

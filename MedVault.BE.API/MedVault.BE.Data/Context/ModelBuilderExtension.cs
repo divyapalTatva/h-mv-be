@@ -35,37 +35,37 @@ namespace MedVault.BE.Data.Context
                     new DocumentCategory
                     {
                         Id = 1,
-                        Name = "Consultation Report",
+                        DocumentCategoryName = "Consultation Report",
                     },
                     new DocumentCategory
                     {
                         Id = 2,
-                        Name = "Pathology"
+                        DocumentCategoryName = "Pathology"
                     },
                     new DocumentCategory
                     {
                         Id = 3,
-                        Name = "Radiology",
+                        DocumentCategoryName = "Radiology",
                     },
                     new DocumentCategory
                     {
                         Id = 4,
-                        Name = "Discharge Summary",
+                        DocumentCategoryName = "Discharge Summary",
                     },
                     new DocumentCategory
                     {
                         Id = 5,
-                        Name = "Treatment Report",
+                        DocumentCategoryName = "Treatment Report",
                     },
                     new DocumentCategory
                     {
                         Id = 6,
-                        Name = "Prescription",
+                        DocumentCategoryName = "Prescription",
                     },
                     new DocumentCategory
                     {
                         Id = 7,
-                        Name = "Prescription",
+                        DocumentCategoryName = "Prescription",
                     }
             );
         }

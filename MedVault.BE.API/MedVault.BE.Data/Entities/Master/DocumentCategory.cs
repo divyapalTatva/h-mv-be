@@ -4,6 +4,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace MedVault.BE.Data.Entities.Master
 {
+    [Table("document_category")]
     public class DocumentCategory : BaseEntity<int>
     {
         [Column("is_active")]
@@ -11,7 +12,7 @@ namespace MedVault.BE.Data.Entities.Master
 
         [Required]
         [MaxLength(150)]
-        [Column("hospital_name")]
-        public string Name { get; set; } = null!;
+        [Column("document_category_name")]
+        public string DocumentCategoryName { get; set; } = null!;
     }
 }

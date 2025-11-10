@@ -18,7 +18,7 @@ namespace MedVault.BE.API.Controllers
             if (!ModelState.IsValid)
                 throw new InvalidModelStateException(ModelState);
 
-            int userId = await userService.UserRegister(userRegisterRequest);
+            string userId = await userService.UserRegister(userRegisterRequest);
 
             return responseService.GetSuccessResponse(HttpStatusCode.OK, userId, SuccessMessage.USER_REGISTERED);
         }

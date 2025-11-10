@@ -1,11 +1,11 @@
 ﻿using MedVault.BE.Data.Entities.Common;
-using System.ComponentModel.DataAnnotations.Schema;
-using System.ComponentModel.DataAnnotations;
-using MedVault.BE.Data.Entities.User;
 using MedVault.BE.Data.Entities.Master;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace MedVault.BE.Data.Entities.Patient
 {
+    [Table("medical_document")]
     public class MedicalDocument : BaseEntity<int>
     {
         [Required]

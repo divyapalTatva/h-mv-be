@@ -4,6 +4,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace MedVault.BE.Data.Entities.User
 {
+    [Table("otp_verification")]
     public class OtpVerification : IdentityEntity<int>
     {
         [Required]

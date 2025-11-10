@@ -4,6 +4,6 @@ namespace MedVault.BE.Services.IServices
 {
     public interface IUserService
     {
-        Task<int> UserRegister(UserRegisterRequest registrationRequest);
+        Task<string> UserRegister(UserRegisterRequest registrationRequest);
     }
 }

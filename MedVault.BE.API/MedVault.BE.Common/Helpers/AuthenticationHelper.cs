@@ -24,7 +24,7 @@ namespace MedVault.BE.Common.Helpers
                 new Claim(ClaimTypes.Surname, authenticationDetail.LastName),
                 new Claim(ClaimTypes.Email, authenticationDetail.Email),
                 new Claim(ClaimTypes.Role, Convert.ToString((int)authenticationDetail.Role)),
-                new Claim(ExtraClaimType.IsProfileFilled, authenticationDetail.IsProfileFilled.ToString()),
+                new Claim(ExtraClaimType.IsProfileFilled, authenticationDetail.IsProfileFilled.ToString().ToLower()),
             ];
 
             var tokenDescriptor = new SecurityTokenDescriptor
