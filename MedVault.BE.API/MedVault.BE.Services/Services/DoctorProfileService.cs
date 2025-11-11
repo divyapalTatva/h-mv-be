@@ -16,7 +16,7 @@ namespace MedVault.BE.Services.Services
         public async Task<int> AddDoctorProfile(DoctorProfileRequest doctorProfileRequest)
         {
             int userId = contextAccessor.HttpContext?.User.GetUserId() ??
-                throw new BadRequestException(ExceptionMessage.ID_IS_NULL_OR_ZERO);
+                throw new BadRequestException(ExceptionMessage.INVALID_USER_ID);
 
             // Check if doctor profile already exists for this user
             bool exists = await doctorProfileRepository.DoctorProfileExists(userId);
@@ -32,7 +32,7 @@ namespace MedVault.BE.Services.Services
         public async Task<int> UpdateDoctorProfile(DoctorProfileRequest doctorProfileRequest)
         {
             int userId = contextAccessor.HttpContext?.User.GetUserId() ??
-                throw new BadRequestException(ExceptionMessage.ID_IS_NULL_OR_ZERO);
+                throw new BadRequestException(ExceptionMessage.INVALID_USER_ID);
 
             DoctorProfile existingDoctorProfile = await doctorProfileRepository.GetDoctorProfileByIdAndUser(doctorProfileRequest.Id, userId)
                             ?? throw new EntityNullException(string.Format(ExceptionMessage.DATA_NOT_EXISTS, "Doctor Profile"));

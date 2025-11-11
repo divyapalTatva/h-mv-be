@@ -52,5 +52,7 @@ namespace MedVault.BE.Common.Constants
         public const string ID_IS_NULL_OR_ZERO = "Id cannot be null or zero.";
 
         public const string USER_ROLE_NOT_AVAILABLE = "User role not available.";
+
+        public const string INVALID_USER_ID = "Invalid user ID.";
     }
 }

@@ -107,6 +107,7 @@ namespace MedVault.BE.API.Extensions
             builder.Services.AddScoped<IPatientProfileService, PatientProfileService>();
             builder.Services.AddScoped<IDoctorProfileService, DoctorProfileService>();
             builder.Services.AddScoped<IDashboardService, DashboardService>();
+            builder.Services.AddScoped<IReminderService, ReminderService>();
 
             // Repositories
             builder.Services.AddScoped<IHospitalRepository, HospitalRepository>();

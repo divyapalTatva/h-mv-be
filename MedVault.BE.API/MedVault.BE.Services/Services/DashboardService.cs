@@ -20,7 +20,7 @@ namespace MedVault.BE.Services.Services
         public async Task<DashboardSummaryResponse> GetDashboardSummary()
         {
             int userId = contextAccessor.HttpContext?.User.GetUserId() ??
-                throw new BadRequestException(ExceptionMessage.ID_IS_NULL_OR_ZERO);
+                throw new BadRequestException(ExceptionMessage.INVALID_USER_ID);
 
             UserRole role = contextAccessor.HttpContext?.User.GetUserRole() ??
                 throw new BadRequestException(ExceptionMessage.USER_ROLE_NOT_AVAILABLE);

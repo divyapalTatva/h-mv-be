@@ -16,7 +16,7 @@ namespace MedVault.BE.Services.Services
         public async Task<int> AddPatientProfile(PatientProfileRequest patientProfileRequest)
         {
             int userId = contextAccessor.HttpContext?.User.GetUserId() ??
-                throw new BadRequestException(ExceptionMessage.ID_IS_NULL_OR_ZERO);
+                throw new BadRequestException(ExceptionMessage.INVALID_USER_ID);
 
             // Check if patient profile already exists for this user
             bool exists = await patientProfileRepositories.PatientProfileExists(userId);
@@ -32,7 +32,7 @@ namespace MedVault.BE.Services.Services
         public async Task<int> UpdatePatientProfile(PatientProfileRequest patientProfileRequest)
         {
             int userId = contextAccessor.HttpContext?.User.GetUserId() ??
-                throw new BadRequestException(ExceptionMessage.ID_IS_NULL_OR_ZERO);
+                throw new BadRequestException(ExceptionMessage.INVALID_USER_ID);
 
             PatientProfile existingPatientProfile = await patientProfileRepositories.GetPatientProfileByIdAndUser(patientProfileRequest.Id, userId)
                             ?? throw new EntityNullException(string.Format(ExceptionMessage.DATA_NOT_EXISTS, "Patient Profile"));
@@ -46,7 +46,7 @@ namespace MedVault.BE.Services.Services
         public async Task<EmergencyResponse> GetEmergencyDetails()
         {
             int userId = contextAccessor.HttpContext?.User.GetUserId() ??
-                throw new BadRequestException(ExceptionMessage.ID_IS_NULL_OR_ZERO);
+                throw new BadRequestException(ExceptionMessage.INVALID_USER_ID);
 
             PatientProfile emergencyResponse = await patientProfileRepositories.GetPatientProfileByUser(userId)
                 ?? throw new EntityNullException(string.Format(ExceptionMessage.DATA_NOT_EXISTS, "Emergency Details"));
