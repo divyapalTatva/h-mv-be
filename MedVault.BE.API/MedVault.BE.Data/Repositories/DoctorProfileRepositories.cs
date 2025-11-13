@@ -1,4 +1,5 @@
 ﻿using MedVault.BE.Data.Context;
+using MedVault.BE.Data.Entities.Master;
 using MedVault.BE.Data.Entities.User;
 using MedVault.BE.Data.IRepositories;
 using Microsoft.EntityFrameworkCore;
@@ -40,6 +41,15 @@ namespace MedVault.BE.Data.Repositories
                 .Include(p => p.Hospital)
                 .AsNoTracking()
                 .FirstOrDefaultAsync(p => p.UserId == userId);
+        }
+
+        public async Task<List<DoctorProfile>> GetDoctorsForDropdown()
+        {
+            return await medVaultDbContext.DoctorProfiles
+                .Include(p => p.User)
+                .AsNoTracking()
+                .OrderBy(g => g.User.FirstName)
+                .ToListAsync();
         }
     }
 }

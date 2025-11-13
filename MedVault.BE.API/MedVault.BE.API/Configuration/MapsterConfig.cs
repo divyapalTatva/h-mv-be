@@ -23,7 +23,24 @@ namespace MedVault.BE.API.Configuration
                 .Map(dest => dest.Address, src => src.Hospital.Address)
                 .Map(dest => dest.ContactNumber, src => src.Hospital.ContactNumber);
 
-            
+            TypeAdapterConfig<PatientHistory, PatientHistoryResponse>.NewConfig()
+                .Map(dest => dest.DoctorName, src => src.DoctorProfile.User.FirstName + " " + src.DoctorProfile.User.LastName)
+                .Map(dest => dest.Description, src => src.Description)
+                .Map(dest => dest.PatientHistoryDocuments, src => src.MedicalDocumentes.Adapt<List<PatientHistoryDocuments>>());
+
+            TypeAdapterConfig<MedicalDocument, PatientHistoryDocuments>.NewConfig()
+                .Map(dest => dest.DocumentCategoryName, src => src.DocumentCategory.DocumentCategoryName)
+                .Map(dest => dest.DateOfDocument, src => src.DateOfDocument)
+                .Map(dest => dest.FilePath, src => src.FilePath);
+
+            TypeAdapterConfig<DoctorProfile, DropdownResponse>.NewConfig()
+                .Map(dest => dest.Value, src => src.Id)
+                .Map(dest => dest.Label, src => src.User.FirstName + " " + src.User.LastName);
+
+            TypeAdapterConfig<DocumentCategory, DropdownResponse>.NewConfig()
+                .Map(dest => dest.Value, src => src.Id)
+                .Map(dest => dest.Label, src => src.DocumentCategoryName);
+
         }
     }
 }

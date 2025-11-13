@@ -3,6 +3,8 @@ using MedVault.BE.Common.Constants;
 using MedVault.BE.Common.CustomExceptions;
 using MedVault.BE.Common.Helpers;
 using MedVault.BE.Common.Models.Request;
+using MedVault.BE.Common.Models.Response;
+using MedVault.BE.Data.Entities.Master;
 using MedVault.BE.Data.Entities.User;
 using MedVault.BE.Data.IRepositories;
 using MedVault.BE.Data.Repositories;
@@ -41,6 +43,12 @@ namespace MedVault.BE.Services.Services
             await doctorProfileRepository.UpdateDoctorProfile(existingDoctorProfile);
 
             return existingDoctorProfile.Id;
+        }
+
+        public async Task<List<DropdownResponse>> GetAllDoctors()
+        {
+            List<DoctorProfile> doctorList = await doctorProfileRepository.GetDoctorsForDropdown();
+            return doctorList.Adapt<List<DropdownResponse>>();
         }
     }
 }

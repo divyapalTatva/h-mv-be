@@ -10,11 +10,11 @@ using System.Net;
 namespace MedVault.BE.API.Controllers
 {
     [Route("api/[controller]")]
-    [ApiController]
-    [Authorize(Policy = "DoctorOnly")]
+    [ApiController]    
     public class DoctorProfileController(IResponseService responseService, IDoctorProfileService doctorProfileService) : ControllerBase
     {
         [HttpPost("add")]
+        [Authorize(Policy = "DoctorOnly")]
         public async Task<IActionResult> AddDoctorProfile(DoctorProfileRequest doctorProfileRequest)
         {
             if (!ModelState.IsValid)
@@ -25,6 +25,7 @@ namespace MedVault.BE.API.Controllers
         }
 
         [HttpPut("update")]
+        [Authorize(Policy = "DoctorOnly")]
         public async Task<IActionResult> UpdateDoctorProfile(DoctorProfileRequest doctorProfileRequest)
         {
             if (!ModelState.IsValid)
@@ -35,6 +36,13 @@ namespace MedVault.BE.API.Controllers
 
             int id = await doctorProfileService.UpdateDoctorProfile(doctorProfileRequest);
             return responseService.GetSuccessResponse(HttpStatusCode.OK, id, SuccessMessage.DOCTOR_PROFILE_UPDATE_SUCCESS);
+        }
+
+        [HttpGet("get-all-doctors")]
+        [Authorize(Policy = "UserOrDoctor")]
+        public async Task<IActionResult> GetAllDoctors()
+        {
+            return responseService.GetSuccessResponse(HttpStatusCode.OK, await doctorProfileService.GetAllDoctors());
         }
     }
 }

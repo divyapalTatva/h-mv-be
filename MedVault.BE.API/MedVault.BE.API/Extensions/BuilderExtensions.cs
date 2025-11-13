@@ -108,6 +108,7 @@ namespace MedVault.BE.API.Extensions
             builder.Services.AddScoped<IDoctorProfileService, DoctorProfileService>();
             builder.Services.AddScoped<IDashboardService, DashboardService>();
             builder.Services.AddScoped<IReminderService, ReminderService>();
+            builder.Services.AddScoped<IPatientHistoryService, PatientHistoryService>();
 
             // Repositories
             builder.Services.AddScoped<IHospitalRepository, HospitalRepository>();
@@ -117,6 +118,7 @@ namespace MedVault.BE.API.Extensions
             builder.Services.AddScoped<IDoctorProfileRepositories, DoctorProfileRepositories>();
             builder.Services.AddScoped<IPatientHistoryRepository, PatientHistoryRepository>();
             builder.Services.AddScoped<IReminderRepository, ReminderRepository>();
+            builder.Services.AddScoped<IDocumentCategoryRepository, DocumentCategoryRepository>();
         }
 
         public static void AddExternalServices(this WebApplicationBuilder builder)

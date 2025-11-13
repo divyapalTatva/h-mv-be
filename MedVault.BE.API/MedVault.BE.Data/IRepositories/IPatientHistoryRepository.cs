@@ -1,4 +1,6 @@
-﻿using MedVault.BE.Data.Entities.Patient;
+﻿using MedVault.BE.Common.Models.Request;
+using MedVault.BE.Common.Models.Response;
+using MedVault.BE.Data.Entities.Patient;
 
 namespace MedVault.BE.Data.IRepositories
 {
@@ -9,5 +11,7 @@ namespace MedVault.BE.Data.IRepositories
         Task<PatientHistory?> GetLastPatientHistoryByUserId(int userId);
 
         Task<int> GetTotoalCheckupByUserId(int userId);
+
+        Task<PageListResponse<PatientHistory>> GetPatientHistoryByPagination(PatientHistoryRequest patientHistoryRequest);
     }
 }

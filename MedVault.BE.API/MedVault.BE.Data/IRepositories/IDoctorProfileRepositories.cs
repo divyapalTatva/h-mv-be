@@ -13,5 +13,7 @@ namespace MedVault.BE.Data.IRepositories
         Task<DoctorProfile?> GetDoctorProfileByIdAndUser(int id, int userId);
 
         Task<DoctorProfile?> GetDoctorHospitalByUserId(int userId);
+
+        Task<List<DoctorProfile>> GetDoctorsForDropdown();
     }
 }

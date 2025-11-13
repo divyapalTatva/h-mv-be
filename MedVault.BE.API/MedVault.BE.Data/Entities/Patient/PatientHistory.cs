@@ -18,6 +18,10 @@ namespace MedVault.BE.Data.Entities.Patient
         [ForeignKey("DoctorProfile")]
         public int DoctorId { get; set; }
 
+        [MaxLength(150)]
+        [Column("title")]
+        public string Title { get; set; } = null!;
+
         [MaxLength(1000)]
         [Column("description")]
         public string? Description { get; set; }

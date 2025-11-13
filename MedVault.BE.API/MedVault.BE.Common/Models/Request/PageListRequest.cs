@@ -12,7 +12,7 @@ namespace MedVault.BE.Common.Models.Request
         public int PageSize { get; set; } = SystemConstant.DEFAULT_PAGE_SIZE;
 
         [RegularExpression(ValidationConstants.SORT_ORDER_REGEX, ErrorMessage = ExceptionMessage.VALIDATE_SORT_ORDER)]
-        public string SortOrder { get; set; } = SystemConstant.ASCENDING;
+        public string SortOrder { get; set; } = SystemConstant.DESCENDING;
 
         public string SortColumn { get; set; } = SystemConstant.DEFAULT_SORT_COLUMN;
 

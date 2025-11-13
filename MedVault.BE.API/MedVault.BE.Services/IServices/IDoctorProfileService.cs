@@ -1,4 +1,5 @@
 ﻿using MedVault.BE.Common.Models.Request;
+using MedVault.BE.Common.Models.Response;
 
 namespace MedVault.BE.Services.IServices
 {
@@ -7,5 +8,7 @@ namespace MedVault.BE.Services.IServices
         Task<int> AddDoctorProfile(DoctorProfileRequest doctorProfileRequest);
 
         Task<int> UpdateDoctorProfile(DoctorProfileRequest doctorProfileRequest);
+
+        Task<List<DropdownResponse>> GetAllDoctors();
     }
 }
