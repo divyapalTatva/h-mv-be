@@ -102,6 +102,9 @@ namespace MedVault.BE.API.Middleware
                 case EntityNullException entityNullException:
                     return (entityNullException.StatusCode, entityNullException.Messages, entityNullException.Metadata);
 
+                case ValidationException validationException:
+                    return (validationException.StatusCode, validationException.Messages, validationException.Metadata);
+
                 default:
                     messages.Add(exception.Message);
                     break;

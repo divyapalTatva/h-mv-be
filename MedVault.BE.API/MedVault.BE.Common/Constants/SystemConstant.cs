@@ -30,4 +30,9 @@
     {
         public const string IsProfileFilled = "ipf";
     }
+
+    public static class FolderPathConstant
+    {
+        public const string PATIENT_HISTORY_DOCUMENT = "Media\\PatientHistory";
+    }
 }

@@ -1,6 +1,4 @@
-﻿using System.Data;
-
-namespace MedVault.BE.Common.Constants
+﻿namespace MedVault.BE.Common.Constants
 {
     public class SuccessMessage
     {
@@ -19,6 +17,10 @@ namespace MedVault.BE.Common.Constants
         public const string DOCTOR_PROFILE_ADD_SUCCESS = "Doctor profile added successfully!";
 
         public const string DOCTOR_PROFILE_UPDATE_SUCCESS = "Doctor profile updated successfully!";
+
+        public const string UPDATED_MESSAGE = "{0} updated successfully!";
+
+        public const string CREATED_MESSAGE = "{0} created successfully!";
     }
 
     public static class ExceptionMessage
@@ -54,5 +56,19 @@ namespace MedVault.BE.Common.Constants
         public const string USER_ROLE_NOT_AVAILABLE = "User role not available.";
 
         public const string INVALID_USER_ID = "Invalid user ID.";
+
+        #region File
+        public const string FILE_IS_NULL = "File is null or empty.";
+
+        public const string FILE_NOT_FOUND = "File not found.";
+
+        public const string FILE_TYPE_NOT_SUPPORTED = "File type not supported. Supported types are: {0}.";
+
+        public const string FILE_SIZE_EXCEEDED = "File size exceeds the maximum limit of {0} MB.";
+
+        public const string FILE_SAVE_FAILED = "File save failed.";
+
+        public const string FILE_DELETE_FAILED = "File delete failed.";
+        #endregion
     }
 }

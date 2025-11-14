@@ -37,7 +37,7 @@ namespace MedVault.BE.Data.Repositories
                                           .CountAsync();
         }
 
-        public async Task<PageListResponse<PatientHistory>> GetPatientHistoryByPagination(PatientHistoryRequest patientHistoryRequest)
+        public async Task<PageListResponse<PatientHistory>> GetPatientHistoryByPagination(PatientHistoryListRequest patientHistoryListRequest)
         {
             var query = medVaultDbContext.PatientHistories
                                          .Include(x => x.MedicalDocumentes)
@@ -52,7 +52,7 @@ namespace MedVault.BE.Data.Repositories
 
             return await GetPagedListAsync(
                 query,
-                patientHistoryRequest,
+                patientHistoryListRequest,
                 (query, request) =>
                 {
                     if (request.DocotorId > 0)
@@ -69,6 +69,30 @@ namespace MedVault.BE.Data.Repositories
                 x => x,
                 sortingExpression
             );
+        }
+
+        public async Task<int> AddPatientHistory(PatientHistory patientHistory)
+        {
+            await medVaultDbContext.PatientHistories.AddAsync(patientHistory);
+            await medVaultDbContext.SaveChangesAsync();
+            return patientHistory.Id;
+        }
+
+        public async Task UpdatePatientHistory(PatientHistory patientHistory)
+        {
+            medVaultDbContext.PatientHistories.Update(patientHistory);
+            await medVaultDbContext.SaveChangesAsync();
+        }
+
+        public async Task<PatientHistory?> GetPatientHistoryById(int id)
+        {
+            return await medVaultDbContext.PatientHistories
+                                          .Include(q => q.PatientProfile)
+                                            .ThenInclude(q => q.User)
+                                          .Include(q => q.DoctorProfile)
+                                            .ThenInclude(q => q.User)
+                                          .Include(q => q.MedicalDocumentes)
+                                          .FirstOrDefaultAsync(x => x.Id == id);
         }
     }
 }

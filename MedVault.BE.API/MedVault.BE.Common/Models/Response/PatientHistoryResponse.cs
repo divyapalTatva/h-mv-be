@@ -2,20 +2,22 @@
 {
     public class PatientHistoryResponse
     {
-        public string DoctorName { get; set; } = string.Empty;
+        public int Id { get; set; }
 
-        public string Title { get; set; } = string.Empty;
+        public int DoctorId { get; set; }
+
+        public string Title { get; set; } = null!;
 
         public string? Description { get; set; }
 
-        public DateTime CreatedAt { get; set; }
-
-        public List<PatientHistoryDocuments> PatientHistoryDocuments { get; set; } = new List<PatientHistoryDocuments>();
+        public List<PatientHistoryDocumentsResponse> PatientHistoryDocuments { get; set; } = new List<PatientHistoryDocumentsResponse>();
     }
 
-    public class PatientHistoryDocuments
+    public class PatientHistoryDocumentsResponse
     {
-        public string DocumentCategoryName { get; set; }
+        public int Id { get; set; }
+
+        public int DocumentCategoryId { get; set; }
 
         public DateTime DateOfDocument { get; set; }
 

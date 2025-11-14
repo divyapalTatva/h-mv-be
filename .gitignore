@@ -55,3 +55,4 @@ nunit-*.xml
 
 # Ignore Visual Studio folder
 .vs/
+/MedVault.BE.API/MedVault.BE.API/Media/PatientHistory

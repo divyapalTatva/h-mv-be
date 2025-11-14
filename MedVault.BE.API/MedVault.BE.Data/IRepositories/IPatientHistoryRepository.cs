@@ -12,6 +12,12 @@ namespace MedVault.BE.Data.IRepositories
 
         Task<int> GetTotoalCheckupByUserId(int userId);
 
-        Task<PageListResponse<PatientHistory>> GetPatientHistoryByPagination(PatientHistoryRequest patientHistoryRequest);
+        Task<PageListResponse<PatientHistory>> GetPatientHistoryByPagination(PatientHistoryListRequest patientHistoryListRequest);
+
+        Task<int> AddPatientHistory(PatientHistory patientHistory);
+
+        Task UpdatePatientHistory(PatientHistory patientHistory);
+
+        Task<PatientHistory?> GetPatientHistoryById(int id);
     }
 }

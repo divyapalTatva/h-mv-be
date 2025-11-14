@@ -1,4 +1,5 @@
 ﻿using Mapster;
+using MedVault.BE.Common.Models.Request;
 using MedVault.BE.Common.Models.Response;
 using MedVault.BE.Data.Entities.Master;
 using MedVault.BE.Data.Entities.Patient;
@@ -23,7 +24,7 @@ namespace MedVault.BE.API.Configuration
                 .Map(dest => dest.Address, src => src.Hospital.Address)
                 .Map(dest => dest.ContactNumber, src => src.Hospital.ContactNumber);
 
-            TypeAdapterConfig<PatientHistory, PatientHistoryResponse>.NewConfig()
+            TypeAdapterConfig<PatientHistory, PatientHistoryListResponse>.NewConfig()
                 .Map(dest => dest.DoctorName, src => src.DoctorProfile.User.FirstName + " " + src.DoctorProfile.User.LastName)
                 .Map(dest => dest.Description, src => src.Description)
                 .Map(dest => dest.PatientHistoryDocuments, src => src.MedicalDocumentes.Adapt<List<PatientHistoryDocuments>>());
@@ -41,6 +42,11 @@ namespace MedVault.BE.API.Configuration
                 .Map(dest => dest.Value, src => src.Id)
                 .Map(dest => dest.Label, src => src.DocumentCategoryName);
 
+            TypeAdapterConfig<PatientHistory, PatientHistoryResponse>.NewConfig()
+                .Map(dest => dest.PatientHistoryDocuments, src => src.MedicalDocumentes.OrderBy(o => o.Id).Adapt<List<PatientHistoryDocumentsResponse>>());
+
+            TypeAdapterConfig<PatientHistoryRequest, PatientHistory>.NewConfig()
+                .Ignore(dest => dest.MedicalDocumentes);
         }
     }
 }

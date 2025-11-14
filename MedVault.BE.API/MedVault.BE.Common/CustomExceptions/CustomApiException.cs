@@ -67,4 +67,13 @@ namespace MedVault.BE.Common.CustomExceptions
         public EntityNullException(IEnumerable<string> messages, IDictionary<string, object>? metadata = null)
             : base((int)HttpStatusCode.NotFound, messages, metadata) { }
     }
+
+    public class ValidationException : CustomApiException
+    {
+        public ValidationException(string message, IDictionary<string, object>? metadata = null)
+            : base((int)HttpStatusCode.BadRequest, message, metadata) { }
+
+        public ValidationException(IEnumerable<string> messages, IDictionary<string, object>? metadata = null)
+            : base((int)HttpStatusCode.BadRequest, messages, metadata) { }
+    }
 }
