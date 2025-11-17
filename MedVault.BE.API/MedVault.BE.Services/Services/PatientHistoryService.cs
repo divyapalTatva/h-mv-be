@@ -18,7 +18,14 @@ namespace MedVault.BE.Services.Services
     {
         public async Task<PageListResponse<PatientHistoryListResponse>> GetPatientHistoryByPagination(PatientHistoryListRequest patientHistoryListRequest)
         {
-            PageListResponse<PatientHistory> patientHistories = await patientHistoryRepository.GetPatientHistoryByPagination(patientHistoryListRequest);
+            int userId = contextAccessor.HttpContext?.User.GetUserId() ??
+                throw new BadRequestException(ExceptionMessage.INVALID_USER_ID);
+
+            // Check if patient profile exists for this user
+            PatientProfile patientProfile = await patientProfileRepositories.GetPatientProfileByUser(userId) ??
+                throw new EntityNullException(string.Format(ExceptionMessage.DATA_NOT_EXISTS, "Patient Profile"));
+
+            PageListResponse<PatientHistory> patientHistories = await patientHistoryRepository.GetPatientHistoryByPagination(patientHistoryListRequest, userId);
             return patientHistories.Adapt<PageListResponse<PatientHistoryListResponse>>();
         }
 

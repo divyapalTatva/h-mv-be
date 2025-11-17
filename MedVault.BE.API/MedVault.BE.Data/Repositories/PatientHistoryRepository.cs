@@ -37,13 +37,14 @@ namespace MedVault.BE.Data.Repositories
                                           .CountAsync();
         }
 
-        public async Task<PageListResponse<PatientHistory>> GetPatientHistoryByPagination(PatientHistoryListRequest patientHistoryListRequest)
+        public async Task<PageListResponse<PatientHistory>> GetPatientHistoryByPagination(PatientHistoryListRequest patientHistoryListRequest, int userId)
         {
             var query = medVaultDbContext.PatientHistories
                                          .Include(x => x.MedicalDocumentes)
                                             .ThenInclude(x => x.DocumentCategory)
                                          .Include(x => x.DoctorProfile)
-                                            .ThenInclude(x => x.User);
+                                            .ThenInclude(x => x.User)
+                                         .Where(x=> x.PatientProfile.UserId == userId);
 
             var sortingExpression = new Dictionary<string, Expression<Func<PatientHistory, object>>>
             {
