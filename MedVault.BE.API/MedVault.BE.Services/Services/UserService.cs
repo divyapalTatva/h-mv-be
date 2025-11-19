@@ -25,7 +25,7 @@ namespace MedVault.BE.Services.Services
             UserRoles userRole = new UserRoles
             {
                 UserId = user.Id,
-                RoleId = UserRole.User
+                RoleId = registrationRequest.Role,
             };
 
             await userRepository.AddUserRole(userRole);

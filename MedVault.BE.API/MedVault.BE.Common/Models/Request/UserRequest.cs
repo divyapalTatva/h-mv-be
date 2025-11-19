@@ -1,13 +1,9 @@
 ﻿using MedVault.BE.Common.Constants;
 using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
+using static MedVault.BE.Common.Enums.Enums;
 
 namespace MedVault.BE.Common.Models.Request
 {
-    public class UserRequest
-    {
-    }
-
     public class UserRegisterRequest
     {
         [Required]
@@ -29,5 +25,8 @@ namespace MedVault.BE.Common.Models.Request
         [Required]
         [MaxLength(255)]
         public string Password { get; set; } = null!;
+
+        [Required]
+        public UserRole Role { get; set; }
     }
 }
